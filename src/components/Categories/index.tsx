@@ -1,11 +1,11 @@
 import React from "react";
 import s from "./Categories.module.scss";
-import jeans from '../../assets/jeans.png'
-import all from '../../assets/all.png'
-import shoes from '../../assets/shoes.png'
-import acs from '../../assets/acs.png'
-import sweater from '../../assets/sweater.png'
-import tshorts from '../../assets/tshorts.png'
+import jeans from "../../assets/jeans.png";
+import all from "../../assets/all.png";
+import shoes from "../../assets/shoes.png";
+import acs from "../../assets/acs.png";
+import sweater from "../../assets/sweater.png";
+import tshorts from "../../assets/tshorts.png";
 
 const Categories = () => {
   return (
@@ -19,10 +19,10 @@ const Categories = () => {
             <img src={shoes} alt="" />
           </div>
           <div className={s.second}>
-          <img src={acs} alt="" />
+            <img src={acs} alt="" />
           </div>
           <div className={s.third}>
-          <img src={tshorts} alt="" />
+            <img src={tshorts} alt="" />
           </div>
         </div>
         <div className={s.bottom}>
