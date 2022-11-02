@@ -7,17 +7,20 @@
     display: flex;
 
     h2 {
+        background-color: black;
+        color: white;
+        padding: 10px;
         font-size: 32px;
     }
 }
 
 .search {
-    color: rgb(172, 172, 172);
+    color: white;
     display: flex;
     margin: auto 0 auto auto;
     font-size: 25px;
-    border: 1px solid rgb(172, 172, 172);
     font-weight: 600;
+    background-color: black;
 
 
     svg {
@@ -28,7 +31,7 @@
 
     input {
         border: 0;
-        color: black;
+        color: white;
         outline: none;
         background: 0;
     }

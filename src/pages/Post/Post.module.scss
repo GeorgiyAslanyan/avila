@@ -1,0 +1,149 @@
+.post {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px;
+}
+
+.preview {
+  position: relative;
+  margin: 0 auto;
+  background-color: black;
+  padding: 20px 20px 0 20px;
+
+  img {
+    width: 500px;
+    user-select: none;      
+  }
+}
+
+.arrow {
+  width: 100%;
+
+  svg {
+    position: absolute;
+    width: 25px;
+    border-radius: 100%;
+    color: white;
+    top: 40%;
+    background-color: black;
+    padding: 7px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: black;
+    }
+  }
+
+  .left {
+    margin: auto auto auto 0;
+
+    margin-right: auto;
+    left: 0;
+  }
+
+  .right {
+    margin: auto 0 auto auto;
+
+    margin-left: auto;
+    right: 0;
+  }
+}
+
+.galery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 500px;
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 84px;
+    cursor: pointer;
+    margin: 10px 0 20px 0;
+    transition: all .2s ease-in-out;
+    filter: grayscale(1);
+    &:hover {
+        filter: grayscale(0);
+    }
+  }
+}
+
+.menu {
+  width: 75%;
+  text-align: left;
+
+  p {
+    padding-right: 20px;
+  }
+}
+
+.sizes {
+  margin-right: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .button,
+  .buttonActive {
+    user-select: none;
+    outline: none;
+    border: 0;
+    font-weight: 600;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .button {
+    background-color: lightgray;
+    &:hover {
+      background-color: rgb(150, 150, 150);
+    }
+  }
+
+  .buttonActive {
+    background-color: black;
+    color: white;
+  }
+}
+.buyMenu {
+  display: flex;
+  margin-top: 20px;
+  user-select: none;
+
+  .input {
+    display: flex;
+    background-color: black;
+    color: white;
+    width: fit-content;
+    margin-right: 10px;
+
+    div {
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    display: flex;
+    width: 150px;
+    outline: none;
+    border: 0;
+    color: white;
+    background-color: black;
+    font-size: 20px;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 15px;
+    transition: all 0.1s ease-in-out;
+
+    svg {
+      padding-left: 10px;
+      width: 25px;
+    }
+
+    &:hover {
+      background-color: rgb(46, 46, 46);
+    }
+  }
+}
