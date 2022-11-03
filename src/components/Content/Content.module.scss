@@ -6,34 +6,34 @@
     margin: 0 20px 0 20px;
     display: flex;
 
-    h2 {
-        background-color: black;
-        color: white;
-        padding: 10px;
-        font-size: 32px;
-    }
-}
+    .categories {
+        display: flex;
+        .selectedItem {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-size: 32px;
+            margin-right: 20px;
+            transition: transform .2s ease-in-out;
 
-.search {
-    color: white;
-    display: flex;
-    margin: auto 0 auto auto;
-    font-size: 25px;
-    font-weight: 600;
-    background-color: black;
+            &:hover {
+                transform: translateY(5px);
+            }
+        }
 
+        .item {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            font-size: 32px;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: transform .2s ease-in-out;
 
-    svg {
-        padding: 5px;
-        width: 25px;
-        height: 25px;
-    }
-
-    input {
-        border: 0;
-        color: white;
-        outline: none;
-        background: 0;
+            &:hover {
+                transform: translateY(5px);
+            }
+        }
     }
 }
 

@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import { ShoppingBagIcon, HeartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import CartPopup from "../CartPopup";
+import { CursorArrowRaysIcon } from "@heroicons/react/24/solid";
 
 const Header = () => {
   const [show, setShow] = React.useState(false);
@@ -14,8 +15,8 @@ const Header = () => {
       <div className={s.header}>
         <Link to="/">
           <div className={s.logo}>
-            <img src={logo} alt="logo" />
             <div className={s.text}>
+              <CursorArrowRaysIcon className={s.click}/>
               <h1>AVILA</h1>
               <p>Интернет магазин одежды</p>
             </div>

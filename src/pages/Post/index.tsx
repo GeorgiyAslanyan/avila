@@ -2,6 +2,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
 import React from "react";
+import Content from "../../components/Content";
+import Recomendations from "../../components/Recomendations";
 import s from "./Post.module.scss";
 
 const Post = () => {
@@ -29,9 +31,6 @@ const Post = () => {
   const onMinusClick = () => {
     count > 1 && setCount(count - 1);
   };
-
-
-
 
   return (
     <>
@@ -90,6 +89,7 @@ const Post = () => {
               </button>
             </div>
           </div>
+          <Recomendations />
         </div>
       )}
     </>
