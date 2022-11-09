@@ -4,13 +4,16 @@ import axios from "axios";
 import React from "react";
 import Content from "../../components/Content";
 import Recomendations from "../../components/Recomendations";
+import { useAppDispatch } from "../../hook";
+import { addItem } from "../../redux/cartSlice";
 import s from "./Post.module.scss";
 
 const Post = () => {
   const [obj, setObj] = React.useState<any>();
   const [count, setCount] = React.useState(1);
   const [preview, setPreview] = React.useState(1);
-  const [size, setSize] = React.useState(1);
+  const [size, setSize] = React.useState(0);
+  const dispatch = useAppDispatch();
 
   React.useLayoutEffect(() => {
     axios
@@ -30,6 +33,17 @@ const Post = () => {
 
   const onMinusClick = () => {
     count > 1 && setCount(count - 1);
+  };
+
+  const onAddClick = () => {
+    dispatch(
+      addItem({
+        id: obj.id,
+        img: obj.img[0],
+        title: obj.title,
+        price: obj.price,
+      })
+    );
   };
 
   return (
@@ -52,30 +66,17 @@ const Post = () => {
             <h1>{obj.title}</h1>
             <p>{obj.description}</p>
             <div className={s.sizes}>
-              <button
-                onClick={() => setSize(1)}
-                className={size === 1 ? s.buttonActive : s.button}
-              >
-                11 US-45 EUR-29cm
-              </button>
-              <button
-                onClick={() => setSize(2)}
-                className={size === 2 ? s.buttonActive : s.button}
-              >
-                11 US-45 EUR-29cm
-              </button>
-              <button
-                onClick={() => setSize(3)}
-                className={size === 3 ? s.buttonActive : s.button}
-              >
-                11 US-45 EUR-29cm
-              </button>
-              <button
-                onClick={() => setSize(4)}
-                className={size === 4 ? s.buttonActive : s.button}
-              >
-                11 US-45 EUR-29cm
-              </button>
+              {["xs", "s", "m", "l", "xl", "xxl", "xxxl", "4xl"].map(
+                (el, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSize(index)}
+                    className={size === index ? s.buttonActive : s.button}
+                  >
+                    {el}
+                  </button>
+                )
+              )}
             </div>
             <h2>{obj.price * count} руб.</h2>
             <div className={s.buyMenu}>
@@ -84,7 +85,7 @@ const Post = () => {
                 <div>{count}</div>
                 <div onClick={() => setCount(count + 1)}>+</div>
               </div>
-              <button>
+              <button onClick={onAddClick}>
                 В корзину <ShoppingBagIcon />{" "}
               </button>
             </div>

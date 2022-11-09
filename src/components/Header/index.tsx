@@ -5,9 +5,12 @@ import { ShoppingBagIcon, HeartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import CartPopup from "../CartPopup";
 import { CursorArrowRaysIcon } from "@heroicons/react/24/solid";
+import { useAppSelector } from "../../hook";
 
 const Header = () => {
   const [show, setShow] = React.useState(false);
+  const count = useAppSelector(state => state.cart.count)
+
   return (
     <div className={s.headerBorder}>
       <CartPopup show={show} setShow={setShow}/>
@@ -25,7 +28,7 @@ const Header = () => {
         <div className={s.nav}>
           <div onClick={() => setShow(true)} className={s.cart}>
             <ShoppingBagIcon />
-            <p>1260 руб.</p>
+            <p>{count}</p>
           </div>
           <Link to="/follow">
             <div className={s.follow}>

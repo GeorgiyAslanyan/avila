@@ -84,6 +84,25 @@
     margin-left: 20px;
     transition: all 0.1s ease-in-out;
     z-index: 0;
+    position: relative;
+    min-height: 40px;
+
+    p {
+      position: absolute;
+      background-color: white;
+      font-weight: 600;
+      color: rgb(129, 129, 129);
+      border-radius: 100%;
+      margin: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      font-size: 14px;
+    }
   }
 
   .cart:hover,

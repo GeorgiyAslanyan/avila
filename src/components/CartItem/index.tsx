@@ -1,5 +1,7 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
+import { useAppDispatch } from "../../hook";
+import { removeItem } from "../../redux/cartSlice";
 import s from "./CartItem.module.scss";
 
 interface CartItemProps {
@@ -10,6 +12,12 @@ interface CartItemProps {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ id, title, img, price }) => {
+  const dispatch = useAppDispatch()
+
+  const onDeleteClick = () => {
+    dispatch(removeItem(id))
+  }
+
   return (
     <div className={s.item}>
       <img src={img} alt="" />
@@ -18,7 +26,7 @@ const CartItem: React.FC<CartItemProps> = ({ id, title, img, price }) => {
         <p>{price} руб.</p>
       </div>
       <div className={s.delete}>
-        <XMarkIcon />
+        <XMarkIcon onClick={onDeleteClick}/>
       </div>
     </div>
   );
