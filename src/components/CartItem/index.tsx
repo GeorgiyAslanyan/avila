@@ -1,7 +1,7 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import { useAppDispatch } from "../../hook";
-import { removeItem } from "../../redux/cartSlice";
+import { useAppDispatch } from "../../redux/hooks/hook";
+import { removeItem } from "../../redux/slices/cartSlice";
 import s from "./CartItem.module.scss";
 
 interface CartItemProps {

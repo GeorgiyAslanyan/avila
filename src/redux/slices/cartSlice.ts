@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import itemsSlice from "./itemsSlice";
-import { RootState } from "./store";
+import { RootState } from "../store";
 
 type Item = {
   id: number;

@@ -1,24 +1,18 @@
 import { HeartIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Item } from "../../types/types";
 import s from "./Card.module.scss";
 
-interface CardProps {
-  id: number;
-  title: string;
-  img: string;
-  price: number;
-}
-
-const Card: React.FC<CardProps> = ({ id, title, img, price }) => {
+const Card: React.FC<Item> = ({ id, title, img, price }) => {
   const [follow, setFollow] = React.useState(false);
   const [add, setAdd] = React.useState(false);
 
   return (
     <div className={s.item}>
-      <Link to={"/post"}>
+      <Link to={`/goods/${id}`}>
         <div className={s.imgBlock}>
-          <img src={img} alt="" />
+          <img src={img[0]} alt="" />
         </div>
         <h3>{title}</h3>
       </Link>

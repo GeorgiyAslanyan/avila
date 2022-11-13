@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../hook";
+import { useAppSelector } from "../../redux/hooks/hook";
 import CartItem from "../CartItem";
 import s from "./CartPopup.module.scss";
 

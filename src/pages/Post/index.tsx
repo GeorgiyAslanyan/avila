@@ -4,8 +4,8 @@ import axios from "axios";
 import React from "react";
 import Content from "../../components/Content";
 import Recomendations from "../../components/Recomendations";
-import { useAppDispatch } from "../../hook";
-import { addItem } from "../../redux/cartSlice";
+import { useAppDispatch } from "../../redux/hooks/hook";
+import { addItem } from "../../redux/slices/cartSlice";
 import s from "./Post.module.scss";
 
 const Post = () => {

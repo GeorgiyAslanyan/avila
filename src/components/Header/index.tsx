@@ -5,7 +5,7 @@ import { ShoppingBagIcon, HeartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import CartPopup from "../CartPopup";
 import { CursorArrowRaysIcon } from "@heroicons/react/24/solid";
-import { useAppSelector } from "../../hook";
+import { useAppSelector } from "../../redux/hooks/hook";
 
 const Header = () => {
   const [show, setShow] = React.useState(false);
