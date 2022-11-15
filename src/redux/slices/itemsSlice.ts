@@ -1,9 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Item } from "../../types/types";
+import { Item, ItemsApi } from "../../types/types";
 import { RootState } from "../store";
 import { fetchItems } from "./ActionCreators";
 
-const initialState = {
+interface State {
+  itemsArr: Item[],
+  sort: ItemsApi
+}
+
+const initialState: State = {
   itemsArr: [
     {
       id: 0,
@@ -85,20 +90,47 @@ const initialState = {
       title: "Nike air trainer 1 sp",
       price: 12000,
     },
-  ]
+  ],
+  sort: {
+    limit: 10,
+    page: 1,
+    category: undefined,
+    search: undefined,
+    sortBy: "createdAt",
+    order: "asc",
+  },
 };
 
 const itemsSlice = createSlice({
   name: "items",
   initialState,
-  reducers: {},
+  reducers: {
+    setLimit: (state, action: PayloadAction<number>) => {
+      state.sort.limit = action.payload
+    },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.sort.page = action.payload
+    },
+    setCategory: (state, action: PayloadAction<undefined | string>) => {
+      state.sort.category = action.payload
+    },
+    setSearch: (state, action: PayloadAction<undefined | string>) => {
+      state.sort.search = action.payload
+    },
+    setSortBy: (state, action: PayloadAction<undefined | 'createdAt' | 'price'>) => {
+      state.sort.sortBy = action.payload
+    },
+    setOrder: (state, action: PayloadAction<undefined | 'asc' | 'desc'>) => {
+      state.sort.order = action.payload
+    },
+  },
   extraReducers: {
     [fetchItems.fulfilled.type]: (state, action: PayloadAction<Item[]>) => {
       state.itemsArr = action.payload;
     },
-    
   },
 });
 
+export const {setLimit, setPage, setCategory, setSearch, setSortBy, setOrder} = itemsSlice.actions
 
 export default itemsSlice.reducer;

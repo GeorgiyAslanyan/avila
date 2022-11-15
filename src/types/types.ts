@@ -11,8 +11,8 @@ export type Item = {
 export interface ItemsApi {
   limit?: number;
   page?: number;
-  category?: null | string;
-  search?: null | string;
-  sortBy?: string;
-  order?: "asc" | "desc";
+  category?: undefined | string;
+  search?: undefined | string;
+  sortBy?: undefined | 'createdAt' | 'price';
+  order?: undefined | "asc" | "desc";
 }

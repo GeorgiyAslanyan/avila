@@ -9,7 +9,7 @@ export const itemsApi = createApi({
   endpoints: (build) => ({
     getItems: build.query<Item[], ItemsApi>({
       query: (arg) => {
-        const { limit = 1, page = 2, category, search, sortBy, order } = arg;
+        const { limit = 10, page = 1, category, search, sortBy, order } = arg;
         return {
           url: "items",
           params: {
