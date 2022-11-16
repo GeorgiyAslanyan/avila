@@ -4,9 +4,14 @@ import Card from "../Card";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hook";
 import { fetchItems } from "../../redux/slices/ActionCreators";
 import { useGetItemsQuery } from "../../redux/api/itemsApi";
-import { setCategory, setPage } from "../../redux/slices/itemsSlice";
+import { setCategory, setOrder, setPage, setSortBy } from "../../redux/slices/itemsSlice";
 import { CircularProgress, Pagination } from "@mui/material";
-import { ArrowLongUpIcon, CalendarDaysIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowLongDownIcon,
+  ArrowLongUpIcon,
+  CalendarDaysIcon,
+  CurrencyDollarIcon,
+} from "@heroicons/react/24/outline";
 
 const Content = () => {
   const { category, sortBy, order, page } = useAppSelector(
@@ -14,7 +19,7 @@ const Content = () => {
   );
 
   const [activeCategory, setActiveCategory] = React.useState("Вся одежда");
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(false);
 
   const dispatch = useAppDispatch();
   const {
@@ -23,17 +28,15 @@ const Content = () => {
     isLoading,
   } = useGetItemsQuery({ page, category, sortBy, order });
 
-  
-
   React.useLayoutEffect(() => {
     dispatch(fetchItems());
   }, []);
 
   const onCategoryChange = async (el: string) => {
     setActiveCategory(el);
-    setLoading(true)
+    setLoading(true);
     await dispatch(setPage(1));
-    setLoading(false)
+    setLoading(false);
   };
 
   const onSetCategory = (el: string) => {
@@ -46,6 +49,18 @@ const Content = () => {
   const onPageChanged = (event: React.ChangeEvent<unknown>, page: number) => {
     dispatch(setPage(page));
   };
+
+  const onSortPriceClick = () => {
+    sortBy === 'price' && order === 'asc' && dispatch(setOrder('desc'))
+    sortBy === 'price' && order === 'desc' && dispatch(setOrder('asc'))
+    sortBy === 'createdAt' && dispatch(setSortBy('price')) && dispatch(setOrder('asc'))
+  }
+
+  const onSortCalendarClick = () => {
+    sortBy === 'createdAt' && order === 'asc' && dispatch(setOrder('desc'))
+    sortBy === 'createdAt' && order === 'desc' && dispatch(setOrder('asc'))
+    sortBy === 'price' && dispatch(setSortBy('createdAt')) && dispatch(setOrder('asc'))
+  }
 
   return (
     <>
@@ -66,8 +81,20 @@ const Content = () => {
               </h2>
             ))}
             <div className={s.sortMenu}>
-                <div className={s.price}><ArrowLongUpIcon className={s.arrow} width={30}/> <CurrencyDollarIcon width={30}/></div>
-                <div className={s.date}><ArrowLongUpIcon className={s.arrow} width={30}/> <CalendarDaysIcon width={30} /></div>
+              <div className={sortBy === "price" ? s.activePrice : s.price} onClick={onSortPriceClick}>
+                {order === 'asc' && sortBy === 'price' ? <ArrowLongUpIcon className={s.arrow} width={30} /> : <ArrowLongDownIcon className={s.arrow} width={30} />}
+                <CurrencyDollarIcon
+                  className={s.priceSvg}
+                  width={30}
+                />
+              </div>
+              <div className={sortBy === "createdAt" ? s.activeDate : s.date} onClick={onSortCalendarClick}>
+              {order === 'asc' && sortBy === 'createdAt' ? <ArrowLongUpIcon className={s.arrow} width={30} /> : <ArrowLongDownIcon className={s.arrow} width={30} />}
+                <CalendarDaysIcon
+                  className={s.dateSvg}
+                  width={30}
+                />
+              </div>
             </div>
           </div>
         </div>

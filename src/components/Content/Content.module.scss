@@ -5,23 +5,6 @@
   margin: 0 20px 0 20px;
   display: flex;
 
-  .sortMenu {
-    display: flex;
-    align-items: center;
-    right: 0;
-    margin-left: auto;
-
-    .arrow {
-      transform: translateX(10px);
-    }
-
-    .price, .date {
-      margin-right: 10px;
-    }
-    svg {
-    }
-  }
-
   .categories {
     width: 100%;
     display: flex;
@@ -63,5 +46,55 @@
   nav {
     max-width: fit-content;
     margin: 0 auto;
+  }
+}
+
+.sortMenu {
+  display: flex;
+  align-items: center;
+  right: 0;
+  margin-left: auto;
+
+  .arrow {
+    transform: translateX(10px);
+  }
+
+  .price,
+  .date {
+    margin-right: 10px;
+    cursor: pointer;
+
+    svg {
+      padding: 5px;
+      transition: all 0.2s ease-in-out;
+      border-radius: 5px;
+      position: relative;
+    }
+
+    &:hover {
+      svg {
+        background-color: #f3f3f3;
+      }
+    }
+  }
+
+  .activePrice,
+  .activeDate {
+    margin-right: 10px;
+    cursor: pointer;
+
+    svg {
+      background-color: #ebebeb;
+      padding: 5px;
+      position: relative;
+      border-radius: 5px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:hover {
+      svg {
+        background-color: #c2c2c2;
+      }
+    }
   }
 }
