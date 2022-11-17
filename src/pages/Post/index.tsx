@@ -2,6 +2,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
 import React from "react";
+import { useParams } from "react-router-dom";
 import Content from "../../components/Content";
 import Recomendations from "../../components/Recomendations";
 import { useAppDispatch } from "../../redux/hooks/hook";
@@ -14,10 +15,12 @@ const Post = () => {
   const [preview, setPreview] = React.useState(1);
   const [size, setSize] = React.useState(0);
   const dispatch = useAppDispatch();
+  const {id} = useParams()
+  
 
   React.useLayoutEffect(() => {
     axios
-      .get("https://63625d277521369cd06ba3c2.mockapi.io/items/2")
+      .get("https://63625d277521369cd06ba3c2.mockapi.io/items/" + id)
       .then((res) => {
         setObj(res.data);
       });
@@ -42,6 +45,7 @@ const Post = () => {
         img: obj.img[0],
         title: obj.title,
         price: obj.price,
+        category: obj.category
       })
     );
   };
@@ -90,7 +94,7 @@ const Post = () => {
               </button>
             </div>
           </div>
-          <Recomendations />
+          <Recomendations category={obj.category}/>
         </div>
       )}
     </>
