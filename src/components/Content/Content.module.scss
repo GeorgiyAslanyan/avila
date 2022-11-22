@@ -49,6 +49,18 @@
   }
 }
 
+.searchResult {
+  text-align-last: left;
+  margin-left: 20px;
+
+  h2 {
+    font-weight: 400;
+    color: black;
+    margin: 0;
+    font-size: medium;
+  }
+}
+
 .sortMenu {
   display: flex;
   align-items: center;

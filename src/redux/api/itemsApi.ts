@@ -16,7 +16,7 @@ export const itemsApi = createApi({
             limit,
             page,
             category,
-            search,
+            title: search,
             sortBy,
             order,
           },

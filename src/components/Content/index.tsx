@@ -12,11 +12,13 @@ import {
   CalendarDaysIcon,
   CurrencyDollarIcon,
 } from "@heroicons/react/24/outline";
+import { useDebounce } from "usehooks-ts";
 
 const Content = () => {
-  const { category, sortBy, order, page } = useAppSelector(
+  const { category, sortBy, order, page, search } = useAppSelector(
     (state) => state.items.sort
   );
+  const debouncedSearch = useDebounce(search, 1000)
 
   const [activeCategory, setActiveCategory] = React.useState("Вся одежда");
   const [loading, setLoading] = React.useState(false);
@@ -26,17 +28,15 @@ const Content = () => {
     data: items,
     error,
     isLoading,
-  } = useGetItemsQuery({ page, category, sortBy, order });
+  } = useGetItemsQuery({ page, category, sortBy, order, search: debouncedSearch });
 
   React.useLayoutEffect(() => {
     dispatch(fetchItems());
-  }, []);
+  }, [search]);
 
-  const onCategoryChange = async (el: string) => {
+  const onCategoryChange = (el: string) => {
     setActiveCategory(el);
-    setLoading(true);
-    await dispatch(setPage(1));
-    setLoading(false);
+    dispatch(setPage(1));
   };
 
   const onSetCategory = (el: string) => {
@@ -98,11 +98,17 @@ const Content = () => {
             </div>
           </div>
         </div>
+        {items && items.length !== 0 && debouncedSearch && <div className={s.searchResult}>
+          <h2>Показаны товары по запросу: {debouncedSearch}</h2>
+        </div>}
+        {items && items.length === 0 && <div className={s.searchResult}>
+          <h2>Товары по запросу "{debouncedSearch}" отсутствуют</h2>
+        </div>}
         {isLoading || loading ? (
           <CircularProgress color="inherit" />
         ) : (
           <div className={s.items}>
-            {items?.map((el) => (
+            {items?.map((el: any) => (
               <Card key={el.id} {...el} />
             ))}
           </div>
