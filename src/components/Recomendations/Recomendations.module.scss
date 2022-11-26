@@ -1,14 +1,21 @@
 .items {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .rec {
-    grid-column-start: 1;
-    grid-column-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 0 40px;
+
+  h2 {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 0;
+  }
 }
 
 .loading {
-    margin: auto auto;
-    min-height: 100px;
+  margin: auto auto;
+  min-height: 100px;
 }

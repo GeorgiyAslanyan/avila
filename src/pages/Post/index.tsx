@@ -59,7 +59,7 @@ const Post = () => {
               <ChevronRightIcon onClick={rightPreview} className={s.right} />
               <ChevronLeftIcon onClick={leftPreview} className={s.left} />
             </div>
-            <img src={obj.img[preview]} alt="" />
+            <img className={s.previewImg} src={obj.img[preview]} alt="" />
             <div className={s.galery}>
               {obj.img.map((el: string, index: number) => (
                 <img key={index} src={el} onClick={() => setPreview(index)} />
