@@ -3,11 +3,13 @@ import itemsSlice from "./itemsSlice";
 import { RootState } from "../store";
 
 type Item = {
+  cartId: number
   id: number;
   img: string;
   title: string;
   price: number;
-  category: string;
+  size: number;
+  count: number
 };
 
 interface CartState {
@@ -26,21 +28,32 @@ const cartSlice = createSlice({
   reducers: {
     addItem(state, action: PayloadAction<Item>) {
       state.items.push({
+        cartId: action.payload.cartId,
         id: action.payload.id,
         img: action.payload.img,
         title: action.payload.title,
         price: action.payload.price,
-        category: action.payload.category
+        size: action.payload.size,
+        count: action.payload.count
       });
       state.count += 1
     },
+    setSize(state, action: PayloadAction<{id: number, size: number}>) {
+      state.items.filter(item => item.cartId === action.payload.id)[0].size = action.payload.size
+    },
+    setPrice(state, action: PayloadAction<{id: number, price: number}>) {
+      state.items.filter(item => item.cartId === action.payload.id)[0].price = action.payload.price
+    },
+    setCount(state, action: PayloadAction<{id: number, count: number}>) {
+      state.items.filter(item => item.cartId === action.payload.id)[0].count = action.payload.count
+    },
     removeItem(state, action: PayloadAction<number>) {
-        state.items = state.items.filter(item => item.id !== action.payload)
+        state.items = state.items.filter(item => item.cartId !== action.payload)
         state.count -= 1
     }
   },
 });
 
-export const { addItem, removeItem } = cartSlice.actions;
+export const { addItem, removeItem, setSize, setCount, setPrice } = cartSlice.actions;
 
 export default cartSlice.reducer;

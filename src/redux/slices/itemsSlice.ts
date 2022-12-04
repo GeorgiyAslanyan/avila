@@ -15,7 +15,7 @@ const initialState: State = {
       img: [
         "https://ae01.alicdn.com/kf/Uc483e0f143be41e496bf61f97e63f5dbl.jpg",
       ],
-      title: "Nike air trainer 1 sp",
+      title: "Тараска",
       price: 12000,
     },
     {

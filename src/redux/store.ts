@@ -4,6 +4,8 @@ import { itemsApi } from "./api/itemsApi";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import itemsSlice from "./slices/itemsSlice";
 
+
+
 const store = configureStore({
   reducer: {
     cart: cartSlice,

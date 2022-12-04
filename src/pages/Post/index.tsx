@@ -5,26 +5,28 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Content from "../../components/Content";
 import Recomendations from "../../components/Recomendations";
-import { useAppDispatch } from "../../redux/hooks/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hook";
 import { addItem } from "../../redux/slices/cartSlice";
 import s from "./Post.module.scss";
 
-const Post = () => {
+const Post = React.memo(() => {
   const [obj, setObj] = React.useState<any>();
   const [count, setCount] = React.useState(1);
-  const [preview, setPreview] = React.useState(1);
   const [size, setSize] = React.useState(0);
+
+  const [preview, setPreview] = React.useState(1);
   const dispatch = useAppDispatch();
   const {id} = useParams()
+  const cartCount = useAppSelector(state => state.cart.count)
   
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     axios
       .get("https://63625d277521369cd06ba3c2.mockapi.io/items/" + id)
       .then((res) => {
         setObj(res.data);
       });
-  }, []);
+  }, [id]);
 
   const rightPreview = () => {
     preview < 3 && setPreview(preview + 1);
@@ -41,11 +43,13 @@ const Post = () => {
   const onAddClick = () => {
     dispatch(
       addItem({
+        cartId: cartCount,
         id: obj.id,
         img: obj.img[0],
         title: obj.title,
-        price: obj.price,
-        category: obj.category
+        price: obj.price * count,
+        size,
+        count
       })
     );
   };
@@ -99,6 +103,6 @@ const Post = () => {
       )}
     </>
   );
-};
+});
 
 export default Post;

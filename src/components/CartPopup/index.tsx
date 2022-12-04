@@ -20,7 +20,7 @@ const CartPopup: React.FC<CartPopupProps> = ({ setShow, show }) => {
         <h2>Ваша корзина</h2>
         <div className={s.items}>
           {items.slice(0, 4).map((el) => (
-            <CartItem key={el.id} {...el} />
+            <CartItem key={el.cartId} {...el} />
           ))}
         </div>
         <div className={s.buttons}>
