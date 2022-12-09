@@ -4,6 +4,7 @@ import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
 import Content from "../../components/Content";
+import Footer from "../../components/Footer";
 import Recomendations from "../../components/Recomendations";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hook";
 import { addItem } from "../../redux/slices/cartSlice";
@@ -101,6 +102,7 @@ const Post = React.memo(() => {
           <Recomendations category={obj.category}/>
         </div>
       )}
+      <Footer />
     </>
   );
 });

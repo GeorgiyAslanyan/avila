@@ -1,15 +1,18 @@
-import React from 'react'
-import Categories from '../../components/Categories'
-import Content from '../../components/Content'
-import s from './Main.module.scss'
+import React from "react";
+import Content from "../../components/Content";
+import Footer from "../../components/Footer";
+import s from "./Main.module.scss";
 
 const Main = () => {
   return (
-    <div className={s.main}>
-        {/* <Categories /> */}
+    <>
+      <div className={s.main}>
         <Content />
-    </div>
-  )
-}
+      </div>
 
-export default Main
+      <Footer />
+    </>
+  );
+};
+
+export default Main;

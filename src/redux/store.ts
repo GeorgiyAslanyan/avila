@@ -3,13 +3,13 @@ import cartSlice from "./slices/cartSlice";
 import { itemsApi } from "./api/itemsApi";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import itemsSlice from "./slices/itemsSlice";
-
-
+import adminSlice from "./slices/adminSlice";
 
 const store = configureStore({
   reducer: {
     cart: cartSlice,
     items: itemsSlice,
+    admin: adminSlice,
     [itemsApi.reducerPath]: itemsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
