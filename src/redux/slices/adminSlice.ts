@@ -1,13 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AdminState {
-  isAdminPage: boolean
   isAuth: boolean
 }
 
 const initialState: AdminState = {
-    isAdminPage: true,
-    isAuth: false
+    isAuth: true
 };
 
 const adminSlice = createSlice({

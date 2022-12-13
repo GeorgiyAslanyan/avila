@@ -1,21 +1,31 @@
 .navbar {
   display: block;
   width: 20%;
+  padding-top: 20px;
   text-align: left;
 
   ul {
     list-style-type: none;
     padding: 0;
 
+    .active {
+      padding: 10px;
+      margin: 5px 10px;
+      display: flex;
+      align-items: center;
+      background-color: black;
+      color: white;
+    }
+
     li {
       padding: 10px;
       margin: 5px 10px;
       display: flex;
       align-items: center;
+      transition: all .2s ease-in-out;
 
       &:hover {
-        background-color: white;
-        border-radius: 10px;
+        transform: translateX(10px);
       }
 
       svg {

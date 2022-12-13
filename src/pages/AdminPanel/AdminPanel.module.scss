@@ -1,6 +1,51 @@
+.adminHeader {
+    display: flex;
+    background-color: #000000;
+    padding: 5px 50px;
+    align-items: center;
+
+    h1 {
+        font-size: large;
+        text-transform: uppercase;
+        margin: 0;
+        color: white;
+        background-color: black;
+        padding: 10px;
+    }
+
+    .buttons {
+        margin-left: auto;
+
+        svg {
+            width: 25px;
+        }
+
+        button {
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+            outline: none;
+            border: 0;
+            background: none;
+            transition: all .1s ease-in-out;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
 .adminPanel {
-    padding: 20px 50px;
+    padding: 0px 50px;
     background-color: #f6f6f6;
     height: 100vh;
     display: flex;
+}
+
+.content {
+    padding: 20px 0 20px 5px;
+    width: 100%;
 }

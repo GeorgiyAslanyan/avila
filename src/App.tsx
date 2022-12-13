@@ -1,6 +1,7 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
+import AdminMain from "./components/AdminComponents/AdminMain";
 import Header from "./components/Header";
 import AdminPanel from "./pages/AdminPanel";
 import LoginPage from "./pages/LoginPage";
@@ -9,8 +10,10 @@ import Post from "./pages/Post";
 import { useAppSelector } from "./redux/hooks/hook";
 
 function App() {
-  const { isAdminPage, isAuth } = useAppSelector((state) => state.admin);
+  const { isAuth } = useAppSelector((state) => state.admin);
 
+  let isAdminPage = useLocation().pathname.indexOf('adminpanel') === 1 ? true : false
+  
   return (
     <div className="App">
       {!isAdminPage && <Header />}
@@ -21,7 +24,7 @@ function App() {
           path="/adminpanel"
           element={!isAuth ? <LoginPage /> : <AdminPanel />}
         >
-          <Route index element={<div>главная</div>} />
+          <Route index element={<AdminMain />} />
           <Route path="posts" element={<div>меню постов</div>} />
         </Route>
       </Routes>
