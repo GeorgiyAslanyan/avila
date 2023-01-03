@@ -1,94 +1,7 @@
-.card {
-  grid-template-columns: 1fr 2fr 1fr 1fr;
-  display: grid;
-  max-height: 100px;
-  padding: 5px;
-  border-bottom: 1px solid lightgrey;
-  align-items: center;
-
-  &:last-child {
-    border-bottom: 0;
-  }
-
-  h3 {
-  }
-
-  img {
-    height: 56px;
-    width: 79px;
-    object-fit: cover;
-  }
-}
-
-.react {
-  button {
-    margin-right: 10px;
-    padding: 10px;
-    border: 0;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all ease-in-out 0.1s;
-    background-color: white;
-
-    &:hover {
-      background-color: lightgrey;
-    }
-  }
-}
-
-.deleteMenu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  backdrop-filter: blur(6px);
-  background-color: #3333337a;
-
-  .deleteBlock {
-    background-color: white;
-    position: absolute;
-    top: 45%;
-    left: 40%;
-    padding: 10px;
-    border-radius: 10px;
-    display: block;
-
-    button {
-      min-width: 50px;
-      cursor: pointer;
-      margin: 5px;
-      outline: none;
-      border: 0;
-      background-color: lightgrey;
-      padding: 5px;
-      border-radius: 5px;
-
-      &:hover {
-        background-color: rgb(228, 228, 228);
-      }
-    }
-  }
-}
-
 .updateMenu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  backdrop-filter: blur(6px);
-  background-color: #3333337a;
-
   .updateBlock {
     background-color: white;
-    position: absolute;
-    top: 10%;
-    overflow: auto;
-    height: 500px;
-    left: 30%;
     padding: 10px;
-    border-radius: 10px;
     display: block;
 
     h1 {
@@ -121,7 +34,11 @@
 }
 
 .inputMenu {
+  background: #f0f0f0;
   padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  min-width: 25%;
 
   .input {
     display: grid;
@@ -134,7 +51,6 @@
       border: 0ch;
       background-color: rgb(219, 219, 219);
       border-radius: 5px;
-      min-height: 150px;
     }
 
     input {
@@ -175,9 +91,25 @@
 }
 
 .preview {
-  .previewImg {
+text-align: left;
+margin-left: 10px;
+
+  .images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mainPreviewImg {
+    width: 500px;
+    height: 300px;
     object-fit: cover;
-    width: 250px;
-    height: 130px;
+    padding: 5px;
+  }
+
+  .previewImg {
+    object-fit: cover;    
+    width: 130px;
+    height: 80px;
+    padding: 5px;
   }
 }

@@ -123,6 +123,9 @@ const itemsSlice = createSlice({
     setOrder: (state, action: PayloadAction<undefined | 'asc' | 'desc'>) => {
       state.sort.order = action.payload
     },
+    deleteItem: (state, action: PayloadAction<number>) => {
+      state.itemsArr = state.itemsArr.filter(item => item.id !== action.payload)
+    }, 
   },
   extraReducers: {
     [fetchItems.fulfilled.type]: (state, action: PayloadAction<Item[]>) => {
@@ -131,6 +134,6 @@ const itemsSlice = createSlice({
   },
 });
 
-export const {setLimit, setPage, setCategory, setSearch, setSortBy, setOrder} = itemsSlice.actions
+export const {setLimit, setPage, setCategory, setSearch, setSortBy, setOrder, deleteItem} = itemsSlice.actions
 
 export default itemsSlice.reducer;

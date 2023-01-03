@@ -1,7 +1,9 @@
 import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
+import AdminCreate from "./components/AdminComponents/AdminCreate";
 import AdminMain from "./components/AdminComponents/AdminMain";
+import AdminPosts from "./components/AdminComponents/AdminPosts";
 import Header from "./components/Header";
 import AdminPanel from "./pages/AdminPanel";
 import LoginPage from "./pages/LoginPage";
@@ -24,8 +26,8 @@ function App() {
           path="/adminpanel"
           element={!isAuth ? <LoginPage /> : <AdminPanel />}
         >
-          <Route index element={<AdminMain />} />
-          <Route path="posts" element={<div>меню постов</div>} />
+          <Route index element={<AdminPosts />} />
+          <Route path='/adminpanel/create' element={<AdminCreate />} />
         </Route>
       </Routes>
     </div>
