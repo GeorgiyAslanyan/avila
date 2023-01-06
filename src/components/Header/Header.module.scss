@@ -12,10 +12,15 @@
   display: flex;
   background-color: #ffffffd0;
 
+  @media (max-width: 1020px) {
+    padding: 20px 10px;
+}
+
   a {
     margin: 0;
     text-decoration: none;
     color: black;
+    align-self: center;
 
     .click {
       position: absolute;
@@ -58,6 +63,10 @@
       font-size: 14px;
       margin: 0;
       font-weight: 500;
+
+      @media (max-width: 680px) {
+        display: none;
+      }
     }
   }
 
@@ -74,6 +83,10 @@
   width: 30%;
   display: flex;
 
+  @media (max-width: 680px) {
+    width: 50%;
+  }
+
   input {
     border: 0;
     outline: none;
@@ -87,7 +100,7 @@
     margin-left: auto;
     margin-right: 10px;
     cursor: pointer;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 
     &:hover {
       color: rgb(255, 0, 85);

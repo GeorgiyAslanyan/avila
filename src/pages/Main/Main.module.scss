@@ -1,4 +1,7 @@
 .main {
     margin: 30px;
-    min-height: 980px;
+
+    @media (max-width: 1020px) {
+        margin: 5px 0;
+    }
 }

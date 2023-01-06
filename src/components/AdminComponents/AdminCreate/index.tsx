@@ -8,7 +8,7 @@ const AdminCreate = () => {
   const [img2, setImg2] = React.useState("");
   const [img3, setImg3] = React.useState("");
   const [img4, setImg4] = React.useState("");
-  const [price, setPrice] = React.useState("");
+  const [price, setPrice] = React.useState(0);
   const [title, setTitle] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("Кроссовки");
   const [description, setDescription] = React.useState('')
@@ -65,7 +65,7 @@ const AdminCreate = () => {
               <input
                 type="text"
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => setPrice(Number(e.target.value))}
               />
             </div>
             <div className={s.input}>

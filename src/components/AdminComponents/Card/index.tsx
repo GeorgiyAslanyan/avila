@@ -28,7 +28,7 @@ const Card: React.FC<Card> = ({ img, id, price, title, category, description }) 
   const [newImg2, setNewImg2] = React.useState("");
   const [newImg3, setNewImg3] = React.useState("");
   const [newImg4, setNewImg4] = React.useState("");
-  const [newPrice, setNewPrice] = React.useState("");
+  const [newPrice, setNewPrice] = React.useState(0);
   const [newTitle, setNewTitle] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("Кроссовки");
   const [activeDescription, setActiveDescription] = React.useState('')
@@ -122,7 +122,7 @@ const Card: React.FC<Card> = ({ img, id, price, title, category, description }) 
                   <input
                     type="text"
                     value={newPrice}
-                    onChange={(e) => setNewPrice(e.target.value)}
+                    onChange={(e) => setNewPrice(Number(e.target.value))}
                   />
                 </div>
                 <div className={s.input}>
